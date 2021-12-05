@@ -13,6 +13,6 @@
 > 
 > 2. 安装软件
 > ```
-> sudo apt install indicator-sysmonitor -y
+>    sudo apt install indicator-sysmonitor -y
 > ```
 > 3. 打开软件，任务栏会显示一些信息，在显示信息的地方右键打开Preferences，General里设置开机启动，Advanced里面添加显示网速的选项：```Net:{net}```
