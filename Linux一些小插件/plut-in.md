@@ -5,7 +5,7 @@
 >     sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor && sudo apt update
 > ```
 > 
->      可以使用下面这个命令来删除该源
+>     可以使用下面这个命令来删除该源
 > 
 > ```
 >     sudo add-apt-repository -r ppa:fossfreedom/indicator-sysmonitor
