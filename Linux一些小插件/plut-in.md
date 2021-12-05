@@ -1,9 +1,9 @@
 # 显示CPU、内存、网速等信息的插件
 > 1. 添加软件源（必须得添加这个，没这个会提示搜不到包）
-
+> 
 > ```sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor && sudo apt update```
 > 
-> 可以使用下面这个命令来删除该源
+>    可以使用下面这个命令来删除该源
 > 
 > ```sudo add-apt-repository -r ppa:fossfreedom/indicator-sysmonitor```
 > 
