@@ -74,7 +74,7 @@
 >     print(x.item())
 >     ```
 
-# PyTorch自动微分
+# 2. PyTorch自动微分
 
 > 1. 创建一个张量，设置requires_grad=True来追踪与它相关的计算
 >
