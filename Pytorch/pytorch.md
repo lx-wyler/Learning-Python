@@ -76,5 +76,63 @@
 
 # PyTorch自动微分
 
+> 1. 创建一个张量，设置requires_grad=True来追踪与它相关的计算
+>
+>    ```x = torch.ones(m, n, requires_grad=True)```
+>
+>    **！！一个在运算过程中创建的张量会有和来源处张量相同的属性**
+>
+> 2. ```.requires_grad_(True/False)```会改变张量的```requires_grad```标记。默认是False
+>
+>    ```python
+>    a = torch.randn(m, n)
+>    a = ((a * 3) / (a - 1))  # 此时a.requires_grad为False
+>    a.requires_grad_(True)  # 此时为True
+>    b = (a * a).sum()  # b也为True
+>    ```
+>
+> 3. 向后传播，举个栗子
+>
+>    ```python
+>    import torch
+>    
+>    x = torch.ones(2, 2, requires_grad=True)  # x是一个全为1的2×2矩阵
+>    y = x + 2  # y = x + 2
+>    z = y * y * 3  # z = 3 (x + 2) ^ 2
+>    out = z.mean()  # out = 1 / 4 * 3 (x + 2) ^ 2
+>    out.backward()  # 这一步以后，就求了out对x的导数，存在x.grad中
+>    print(x.grad)  # 每有一步.backward()，就会将结果累计在x.grad中，所以如果要用每一步的结果就必					须要将x.grad清空
+>    ```
+>
+>    **只有标量才能执行```.backward()```!!!!**
+>
+> 4. 雅克比向量积的栗子
+>
+>    ```python
+>    x = torch.randn(3, requires_grad=True)
+>    y = x * 2
+>    while y.data.norm() < 1000:
+>        y = y * 2
+>    # 上面这个while中，y.data.norm()表示y的L2范数，就是y中所有元素，每个平方，然后加起来再开方
+>    print(y)
+>    # 此时y不是标量，无法直接计算整个雅克比，但只想要雅克比向量积的话，只要简单的传递向量给backward作为参数即可
+>    v = torch.tensor([0.1, 1.0, 0.0001], dtype=torch.float)
+>    y.backward(v)
+>    print(x.grad)
+>    # 后面这一段没怎么看懂（2021年12月22日）
+>    ```
+>
+> 5. 可以将代码放在with torch.no_grad()中来停止自动求导
+>
+>    ```python
+>    print(x.requires_grad)
+>    print((x ** 2).requires_grad)
+>    with torch.no_grad():
+>        print((x ** 2).requires_grad)
+>    # 输出结果是T T F
+>    ```
+
+
+
 
 
