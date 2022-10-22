@@ -44,3 +44,12 @@
 >
 >   或者参考知乎稚晖君的[文章](https://zhuanlan.zhihu.com/p/336429888)
 
+# 解决22.04遇到的问题
+
+1. 使用```sudo apt update```和```sudo apt upgrade```后出依赖问题，可能是更换的源和安装的系统，版本不匹配导致。比如，源里面其中一句```deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse```中，**focal**就是系统版本。
+
+   此时使用```lsb-release -a```查看自己系统版本号，然后替换上面的**focal**。（```sudo gedit /etc/apt/sources.list```），再次执行更新即可。
+
+2. [安装梯子](http://qv2ray.net/lang/zh/getting-started/step2.html#%E4%B8%8B%E8%BD%BD-v2ray-%E6%A0%B8%E5%BF%83%E6%96%87%E4%BB%B6)
+
+   Qv2ray需要配置。首选项里面的第二个选项卡，第一个需要选v2ray这个文件，第二个选择该文件所在的路径。v2ray和v2ctl需要可执行。外面的```applmage```文件需要可执行，第一次用命令行打开。
