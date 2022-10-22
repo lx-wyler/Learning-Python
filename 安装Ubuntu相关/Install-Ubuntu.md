@@ -53,3 +53,17 @@
 2. [安装梯子](http://qv2ray.net/lang/zh/getting-started/step2.html#%E4%B8%8B%E8%BD%BD-v2ray-%E6%A0%B8%E5%BF%83%E6%96%87%E4%BB%B6)
 
    Qv2ray需要配置。首选项里面的第二个选项卡，第一个需要选v2ray这个文件，第二个选择该文件所在的路径。v2ray和v2ctl需要可执行。外面的```applmage```文件需要可执行，第一次用命令行打开。
+
+3. 安装VMware tools后无法复制和托文件
+
+   想办法移除VMware tools，然后运行下面三条命令
+
+   ```bash
+   sudo apt-get autoremove open-vm-tools
+   sudo apt-get install open-vm-tools
+   sudo apt-get install open-vm-tools-desktop
+   ```
+
+   重启即可。
+
+   > 好像执行第一个命令，能移除VMware tools，然后再执行下面两个就行了。
